@@ -1,0 +1,242 @@
+////
+/// Mixins File
+/// @group _mixins.scss
+/// @author Shyqeri Gashi
+////
+
+/*=====================================
+=            MEDIA QUERIES            =
+=====================================*/
+/// Media Query mixin for mobile devices 0 < 768
+///@author Shyqeri Gashi
+///@content CSS blocks on the desired element or if used by itself you can play selectors inside
+///@output It outputs the typed mediaquery and its css blocks if used inside an element
+///@example
+/// input {
+///   font-size:32px;
+///   @include mobile {
+///     font-size:12px;
+///     }
+/// }
+@mixin mobile {
+  @media only screen and (max-width: 767px) {
+    @content;
+  }
+}
+/// Media Query mixin for small tablets 768 < 991
+///@author Shyqeri Gashi
+///@content CSS blocks on the desired element or if used by itself you can play selectors inside
+///@output It outputs the typed mediaquery and its css blocks if used inside an element
+///@example
+/// input {
+///   font-size:32px;
+///   @include tablet {
+///     font-size:12px;
+///     }
+/// }
+@mixin tablet {
+  @media only screen and (min-width: 768px) and (max-width: 990px) {
+    @content;
+  }
+}
+/// Media Query mixin for big tablets 991 < 1199
+///@author Shyqeri Gashi
+///@content CSS blocks on the desired element or if used by itself you can play selectors inside
+///@output It outputs the typed mediaquery and its css blocks if used inside an element
+///@example
+/// input {
+///   font-size:32px;
+///   @include tablet-big {
+///     font-size:12px;
+///     }
+/// }
+@mixin tablet-big {
+  @media only screen and (min-width: 991px) and (max-width: 1199px) {
+    @content;
+  }
+}
+/// Media Query mixin for desktop devices over 1200px  > 1200
+///@author Shyqeri Gashi
+///@content CSS blocks on the desired element or if used by itself you can play selectors inside
+///@output It outputs the typed mediaquery and its css blocks if used inside an element
+///@example
+/// input {
+///   font-size:32px;
+///   @include desktop {
+///     font-size:42px;
+///     }
+/// }
+@mixin desktop {
+  @media only screen and (min-width: 1200px) {
+    @content;
+  }
+}
+
+/*=====  End of MEDIA QUERIES  ======*/
+
+/*==============================
+=            MIXINS            =
+==============================*/
+
+///@author Shyqeri Gashi
+///@content CSS Content to style input elemts
+///@output Placeholder style for input elements
+///@example
+/// input {
+///   @include placeholder {
+///     font-size:12px;
+///     }
+/// }
+@mixin placeholder {
+  &::-webkit-input-placeholder {
+    @content;
+  }
+  &:-moz-placeholder {
+    @content;
+  }
+  &::-moz-placeholder {
+    @content;
+  }
+  &:-ms-input-placeholder {
+    @content;
+  }
+}
+
+/// Rem mixin to calculate rem based spacing from the base pixel of the html document
+/// Which can be set inside the mixin itself
+///@author Shyqeri Gashi
+///@param {CSS Property} $property - any css property
+///@param {Value} $values - property value in pixels ONLY
+///@output Calculated style from px to rem together with px fallback
+///@example
+/// h1 {
+///   @include rem('font-size',16px);
+/// }
+/// //It outputs this: h1{font-size,16px; font-size:1rem;}
+@mixin rem($property, $values) {
+  // Create a couple of empty lists as output buffers.
+  $base-font-size: 16px; // should be consistent with your html/body font-size
+  $px-values: ();
+  $rem-values: ();
+  // Loop through the $values list
+  @each $value in $values {
+    // For each property value, if it's in rem or px, derive both rem and
+    // px values for it and add those to the end of the appropriate buffer.
+    // Ensure all pixel values are rounded to the nearest pixel.
+    @if $value==0 or $value==0px {
+      // 0 -- use it without a unit
+      $px-values: join($px-values, 0);
+      $rem-values: join($rem-values, 0);
+    } @else if
+      type-of($value)
+      ==number and not
+      unitless($value) and
+      (unit($value) ==px)
+    {
+      // px value given - calculate rem value from base-font-size
+      $new-rem-value: $value / $base-font-size;
+      $px-values: join($px-values, round($value));
+      $rem-values: join($rem-values, #{$new-rem-value}rem);
+    } @else {
+      // unitless value - use those directly as rem and calculate the px-fallback
+      $px-values: join($px-values, round($value * $base-font-size));
+      $rem-values: join($rem-values, #{$value}rem);
+    }
+  }
+  // output the converted rules
+  #{$property}: $px-values;
+  #{$property}: $rem-values;
+}
+/// Centers element horizontally, vertically or both
+///@author Shyqeri Gashi
+///@param {boolean} $isHorizontal [true] - If we want the element to be centered horizontally
+///@param {boolean} $isVertical [true] - If we want the element to be centered vertically
+///@output Flex, container with the defined attribute to center it horizontally, vertically or both
+///@example
+/// body {
+///   @include flexCenter(true,false);
+/// }
+/// //It outputs this: body {
+/// // display: -webkit-box;
+/// // display: -ms-flexbox;
+/// // display: flex;
+/// // -ms-flex-wrap: wrap;
+/// // flex-wrap: wrap;
+/// // -webkit-box-pack: center;
+/// // -ms-flex-pack: center;
+/// // justify-content: center;
+/// // }
+@mixin flexCenter($isHorizontal: true, $isVertical: true) {
+  display: flex;
+  flex-wrap: wrap;
+  @if $isHorizontal == true {
+    justify-content: center;
+  }
+  @if $isVertical== true {
+    align-items: center;
+  }
+  @if $isHorizontal== true and $isVertical== true {
+    justify-content: center;
+    align-items: center;
+  }
+}
+/// Same as %fullBlock but as a mixin to be used on RWD styles
+/// @see %fullBlock
+/// @example .container { @include fullBlock; }
+@mixin fullBlock {
+  float: left;
+  width: 100%;
+  clear: both;
+}
+
+/*=====  End of MIXINS  ======*/
+
+/*========================================
+=            EXTEND SELECTORS            =
+========================================*/
+/// Extend only selector used to clear floating elements and containers
+/// @example .container { @extend %clearfix; }
+%clearfix {
+  *zoom: 1;
+  &:before,
+  &:after {
+    content: ' ';
+    display: table;
+  }
+  &:after {
+    clear: both;
+  }
+}
+/// Extend only selector used to center an absolute positioned element
+/// @example .container { @extend %centered; }
+%centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+/// Extend only selector used to generate a full width element
+/// @example .container { @extend %fullBlock; }
+%fullBlock {
+  float: left;
+  width: 100%;
+  clear: both;
+}
+/// Extend only selector used to generate cropped images
+/// @example img { @extend %imgCropped; }
+%imgCropped {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+/// Extend only selector used to make an element behave like an overlay
+/// @example .container { @extend %overlay; }
+%overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/*=====  End of EXTEND SELECTORS  ======*/

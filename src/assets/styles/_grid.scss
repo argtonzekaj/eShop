@@ -1,0 +1,383 @@
+////
+/// Grid File
+/// @group grid.scss
+/// @author Shyqeri Gashi
+////
+
+/// Generates grid columns based on the specified variables in _variables.scss
+/// This is the default grid
+/// @see _variables.scss
+/// @require $grid-columns
+/// @example .column-12 {
+///            width:100%;
+///           }
+@for $i from 1 through $grid-columns {
+  .column-#{$i} {
+    width: 100% / $grid-columns * $i;
+  }
+}
+
+.wow {
+  visibility: hidden;
+}
+
+//WILDCARD SELECTOR FOR COLUMNS
+[class*='column-'] {
+  float: left;
+  min-height: 1px;
+}
+
+.has_gutter {
+  [class*='column-'] {
+    padding: 0 $gutter/2;
+  }
+}
+
+//CLEARFIX FOR ROWS AND CONTAINER SEE MIXINS FILE
+.container,
+.row {
+  @extend %clearfix;
+}
+
+.row {
+  margin-left: -$gutter/2;
+  margin-right: -$gutter/2;
+}
+
+.container {
+  width: 100%;
+  margin: 0 auto;
+  position: relative;
+  padding: 0 15px;
+  @include tablet {
+    max-width: 732px;
+  }
+  @include tablet-big {
+    max-width: 970px;
+  }
+  @include desktop {
+    max-width: 1200px;
+  }
+}
+
+//VISIBILITY CLASSES
+//VISIBILITY CLASSES
+@include desktop {
+  .show-mob {
+    display: none !important;
+  }
+  .show-tab {
+    display: none !important;
+  }
+  .show-tab-big {
+    display: none !important;
+  }
+}
+
+.hidden-mob {
+  display: block;
+}
+
+.hidden {
+  display: none !important;
+}
+
+// RESPONSIVE GRID column-mob,column-tab.column-phab see mixins
+@include mobile {
+  @for $i from 1 through $grid-columns {
+    .column-mob-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
+  }
+  .show-mob {
+    display: block !important;
+  }
+  .hidden-mob {
+    display: none !important;
+  }
+}
+
+@include tablet {
+  @for $i from 1 through $grid-columns {
+    .column-tab-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
+  }
+  .show-tab {
+    display: block !important;
+  }
+  .hidden-tab {
+    display: none !important;
+  }
+}
+
+@include tablet-big {
+  @for $i from 1 through $grid-columns {
+    .column-tab-big-#{$i} {
+      width: 100% / $grid-columns * $i;
+    }
+  }
+  .show-tablet-big {
+    display: block !important;
+  }
+  .hidden-tablet-big {
+    display: none !important;
+  }
+}
+
+.is-full-width {
+  width: 100vw !important;
+  position: relative;
+  margin-left: -50vw;
+  left: 50%;
+  max-width: none;
+}
+
+.no_padding {
+  padding: 0 !important;
+}
+
+.pull-right {
+  float: right !important;
+}
+
+.pull-left {
+  float: left !important;
+}
+
+//Sticky footer and body globals
+body {
+  display: flex;
+  min-height: 100vh;
+  flex-direction: column;
+}
+main {
+  flex: 1;
+}
+.no-flexboxlegacy body {
+  display: block !important;
+}
+
+body {
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
+  font-size: 14px;
+  color: black;
+  position: relative;
+  overflow-x: hidden;
+}
+
+input,
+textarea,
+select,
+option {
+  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
+    Arial, sans-serif;
+  opacity: 1;
+  @include placeholder {
+    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
+      Arial, sans-serif;
+    opacity: 1;
+    font-size: 14px;
+    color: black;
+  }
+}
+
+.iphone {
+  input,
+  textarea,
+  select,
+  option {
+    appearance: none;
+    border-radius: 0;
+  }
+}
+
+select::-ms-expand {
+  display: none;
+}
+
+/*=================================
+=            Normalize            =
+=================================*/
+
+mark {
+  background: #ff0;
+  color: #000;
+}
+
+small {
+  font-size: 80%;
+}
+
+sub,
+sup {
+  font-size: 75%;
+  line-height: 0;
+  position: relative;
+  vertical-align: baseline;
+}
+
+sup {
+  top: -0.5em;
+}
+
+sub {
+  bottom: -0.25em;
+}
+
+pre {
+  overflow: auto;
+}
+
+code,
+kbd,
+pre,
+samp {
+  font-family: monospace, monospace;
+  font-size: 1em;
+}
+
+pre {
+  background: #eee;
+  font-family: 'Courier 10 Pitch', Courier, monospace;
+  font-size: 15px;
+  font-size: 0.9375rem;
+  line-height: 1.6;
+  margin-bottom: 1.6em;
+  max-width: 100%;
+  overflow: auto;
+  padding: 1.6em;
+}
+
+code,
+kbd,
+tt,
+var {
+  font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+  font-size: 15px;
+  font-size: 0.9375rem;
+}
+
+abbr,
+acronym {
+  border-bottom: 1px dotted #666;
+  cursor: help;
+}
+
+mark,
+ins {
+  background: #fff9c0;
+  text-decoration: none;
+}
+
+big {
+  font-size: 125%;
+}
+
+.screen-reader-text {
+  clip: rect(1px, 1px, 1px, 1px);
+  position: absolute !important;
+  height: 1px;
+  width: 1px;
+  overflow: hidden;
+}
+
+.screen-reader-text:focus {
+  background-color: #f1f1f1;
+  border-radius: 3px;
+  box-shadow: 0 0 2px 2px rgba(0, 0, 0, 0.6);
+  clip: auto !important;
+  color: #21759b;
+  display: block;
+  font-size: 14px;
+  font-size: 0.875rem;
+  font-weight: bold;
+  height: auto;
+  left: 5px;
+  line-height: normal;
+  padding: 15px 23px 14px;
+  text-decoration: none;
+  top: 5px;
+  width: auto;
+  z-index: 100000;
+  /* Above WP toolbar. */
+}
+
+.gallery {
+  margin-bottom: 1.5em;
+}
+
+.gallery-item {
+  display: inline-block;
+  text-align: center;
+  vertical-align: top;
+  width: 100%;
+}
+
+.gallery-columns-2 .gallery-item {
+  max-width: 50%;
+}
+
+.gallery-columns-3 .gallery-item {
+  max-width: 33.33%;
+}
+
+.gallery-columns-4 .gallery-item {
+  max-width: 25%;
+}
+
+.gallery-columns-5 .gallery-item {
+  max-width: 20%;
+}
+
+.gallery-columns-6 .gallery-item {
+  max-width: 16.66%;
+}
+
+.gallery-columns-7 .gallery-item {
+  max-width: 14.28%;
+}
+
+.gallery-columns-8 .gallery-item {
+  max-width: 12.5%;
+}
+
+.gallery-columns-9 .gallery-item {
+  max-width: 11.11%;
+}
+
+.gallery-caption {
+  display: block;
+}
+
+/* Do not show the outline on the skip link target. */
+
+#main[tabindex='-1']:focus {
+  outline: 0;
+}
+
+/*--------------------------------------------------------------
+# Alignments
+--------------------------------------------------------------*/
+
+.alignleft {
+  display: inline;
+  float: left;
+  margin-right: 1.5em;
+}
+
+.alignright {
+  display: inline;
+  float: right;
+  margin-left: 1.5em;
+}
+
+.aligncenter {
+  clear: both;
+  display: block;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/*=====  End of Normalize  ======*/

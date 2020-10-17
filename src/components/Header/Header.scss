@@ -1,0 +1,26 @@
+.Header {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 10px 25px;
+  background-color: #135c3a;
+  .logo {
+    width: 50px;
+  }
+}
+.nav_wrapper {
+  ul {
+    list-style: none;
+    display: flex;
+  }
+  li {
+    margin-left: 25px;
+  }
+  a {
+    font-size: 16px;
+    color: #fff;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}
