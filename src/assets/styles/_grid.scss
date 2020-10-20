@@ -22,13 +22,13 @@
 }
 
 //WILDCARD SELECTOR FOR COLUMNS
-[class*='column-'] {
+[class*="column-"] {
   float: left;
   min-height: 1px;
 }
 
 .has_gutter {
-  [class*='column-'] {
+  [class*="column-"] {
     padding: 0 $gutter/2;
   }
 }
@@ -56,7 +56,7 @@
     max-width: 970px;
   }
   @include desktop {
-    max-width: 1200px;
+    max-width: 1310px;
   }
 }
 
@@ -159,8 +159,7 @@ main {
 }
 
 body {
-  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   color: black;
   position: relative;
@@ -171,12 +170,10 @@ input,
 textarea,
 select,
 option {
-  font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
-    Arial, sans-serif;
+  font-family: "Poppins", sans-serif;
   opacity: 1;
   @include placeholder {
-    font-family: BlinkMacSystemFont, -apple-system, Segoe UI, Roboto, Helvetica,
-      Arial, sans-serif;
+    font-family: "Poppins", sans-serif;
     opacity: 1;
     font-size: 14px;
     color: black;
@@ -240,7 +237,7 @@ samp {
 
 pre {
   background: #eee;
-  font-family: 'Courier 10 Pitch', Courier, monospace;
+  font-family: "Courier 10 Pitch", Courier, monospace;
   font-size: 15px;
   font-size: 0.9375rem;
   line-height: 1.6;
@@ -254,7 +251,7 @@ code,
 kbd,
 tt,
 var {
-  font-family: Monaco, Consolas, 'Andale Mono', 'DejaVu Sans Mono', monospace;
+  font-family: Monaco, Consolas, "Andale Mono", "DejaVu Sans Mono", monospace;
   font-size: 15px;
   font-size: 0.9375rem;
 }
@@ -353,7 +350,7 @@ big {
 
 /* Do not show the outline on the skip link target. */
 
-#main[tabindex='-1']:focus {
+#main[tabindex="-1"]:focus {
   outline: 0;
 }
 

@@ -11,7 +11,10 @@ import { Header } from './components/Header/Header';
 
 //Pages
 import { Home } from './pages/Home/Home';
-import { Contact } from './pages/Contact/Contact';
+import { Product } from './pages/Product/Product';
+import { Catalog } from './pages/Catalog/Catalog';
+
+
 import { ErrorPage } from './pages/ErrorPage/ErrorPage';
 
 //Styles
@@ -21,14 +24,14 @@ function App() {
   return (
     <div className="App">
       <Router>
-        <Header />
         <Switch>
-          <Route exact path="/" component={Home} />
-          <Route exact path="/contact" component={Contact} />
+          <Route exact path="/" component={Home} /> 
+          <Route exact path="/product" component={Product} />
+          <Route exact path="/catalog" component={Catalog} />
           <Route component={ErrorPage} />
         </Switch>
         <Footer />
-      </Router>
+      </Router> 
     </div>
   );
 }

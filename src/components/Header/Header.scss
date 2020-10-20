@@ -1,20 +1,21 @@
 .Header {
+  position: fixed;
+  z-index: 9;
   width: 100%;
-  display: flex;
-  justify-content: space-between;
   align-items: center;
   padding: 10px 25px;
-  background-color: #135c3a;
-  .logo {
-    width: 50px;
-  }
 }
-.nav_wrapper {
-  ul {
-    list-style: none;
-    display: flex;
-  }
+.headerWrap {
+  display: flex;
+  justify-content: space-between;
+}
+.logo-first {
+  margin-top: 48px;
+}
+.nav_list {
+  display: flex;
   li {
+    margin-top: 58px;
     margin-left: 25px;
   }
   a {

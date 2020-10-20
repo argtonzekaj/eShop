@@ -1,3 +1,150 @@
 .Home {
   width: 100%;
 }
+.banner_section {
+  width: 100%;
+  position: relative;
+  .slick-arrow {
+    width: 72px;
+    height: 72px;
+    background-color: #fff;
+    z-index: 9;
+    &:before {
+      color: #000;
+    }
+  }
+  .slick-next {
+    right: 160px;
+    bottom: 60px;
+    top: unset;
+  }
+  .slick-prev {
+    right: 250px;
+    bottom: 60px;
+    top: unset;
+    left: unset;
+  }
+  .slick-disabled {
+    background-color: rgba($color: #fff, $alpha: 0.12);
+    &:before {
+      color: #fff;
+    }
+  }
+}
+.sliderItem {
+  width: 100%;
+  height: 100vh;
+  position: relative;
+  img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    position: absolute;
+  }
+}
+.banner__content {
+  width: 640px;
+  h2 {
+    margin-top: 250px;
+    font-size: 66px;
+    line-height: 77px;
+    font-weight: 700;
+    color: white;
+  }
+}
+.collection__wrapper {
+  position: relative;
+  height: 500px;
+  margin-top: 60px;
+  .collection__thumb {
+    img {
+      position: absolute;
+      width: 608px;
+      height: 373px;
+    }
+  }
+  .collection__content {
+    p {
+      position: absolute;
+      color: white;
+      width: 153px;
+      font-weight: 400;
+      font-size: 25px;
+      line-height: 39px;
+      margin-top: 163px;
+      margin-left: 53px;
+    }
+    span {
+      position: absolute;
+      margin-top: 262px;
+      padding: 15px 25px;
+      font-weight: 600;
+      font-size: 13px;
+      border-radius: 50px;
+      background-color: white;
+      color: black;
+      margin-left: 53px;
+    }
+    span:hover {
+      padding: 20px;
+      transition: all 0.2s ease-in-out;
+    }
+  }
+}
+.main_title {
+  margin-bottom: 50px;
+  h3 {
+    text-align: center;
+    font-size: 29px;
+  }
+}
+.favorite_slider {
+  margin-left: -15px;
+  margin-right: -15px;
+}
+.favorite_product_item {
+  padding: 0 15px;
+}
+.subscribe_section {
+  margin-top: 65px;
+  margin-bottom: 95px;
+}
+.subscribe__text {
+  h2 {
+    position: absolute;
+    font-weight: 400;
+    text-align: center;
+    font-size: 29px;
+    line-height: 38px;
+    color: #fff;
+    width: 505px;
+    top: 81px;
+    left: 101px;
+  }
+}
+.subscribe_input {
+  padding-left: 35px;
+  padding-right: 35px;
+  width: 315px;
+  height: 48px;
+  position: absolute;
+  border-radius: 30px;
+  outline: none;
+  border: #707070;
+  top: 96px;
+  right: 285px;
+}
+.subscribe_button {
+  position: absolute;
+  font-size: 13px;
+  font-weight: 600;
+  line-height: 24px;
+  top: 96px;
+  right: 145px;
+  color: black;
+  background-color: #fbb03b;
+  outline: none;
+  border: none;
+  border-radius: 30px;
+  padding: 12px 25px;
+}

@@ -1,0 +1,27 @@
+.SecondHeader {
+  width: 100%;
+  border-bottom: 1px solid #e5e5e5;
+  .Header__wrap--another {
+    width: 100%;
+    padding: 37px 0px 47px 0px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+}
+.Another-nav_wrapper {
+  ul {
+    list-style: none;
+    display: flex;
+  }
+  li {
+    margin-left: 72px;
+  }
+  a {
+    font-size: 14px;
+    color: #000000;
+    font-weight: 600;
+    text-transform: uppercase;
+    text-decoration: none;
+  }
+}

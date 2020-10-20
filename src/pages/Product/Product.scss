@@ -1,0 +1,37 @@
+.Product {
+  width: 100%;
+  .food__wrapper {
+    margin-top: 60px;
+    display: flex;
+    margin-bottom: 150px;
+    &__thumb {
+      margin-right: 112px;
+      img {
+        width: 600px;
+        height: 476px;
+      }
+    }
+    &__content {
+      max-width: 460px;
+      h3 {
+        width: 300px;
+        font-size: 30px;
+        margin-bottom: 20px;
+        font-weight: 300;
+      }
+      span {
+        font-size: 30px;
+        font-weight: 400;
+      }
+      p {
+        margin-top: 23px;
+        font-size: 13px;
+        line-height: 25px;
+      }
+    }
+    &__id {
+      font-size: 12px;
+      color: #cecece;
+    }
+  }
+}
